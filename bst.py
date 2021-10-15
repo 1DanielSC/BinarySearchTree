@@ -1,88 +1,21 @@
 from node import Node
-from collections import deque
+from binary_tree import BinaryTree
 
 
-class BinarySearchTree:
+class BinarySearchTree(BinaryTree):
 
     def __init__(self, firstElement):
         self.root = Node(int(firstElement))
 
 
-    def preOrder(self):
-        print("Pre-Order traversal: ",end='')
-        self.__preOrder(self.root)
-        print("")
-
-    def __preOrder(self, root):
-        if(root == None):
-            return
-
-        print(str(root.key) + " ",end='')
-        self.__preOrder(root.left)
-        self.__preOrder(root.right)
-
-
-
-
-
-    def inOrder(self):
-        print("In-Order traversal: ",end='')
-        self.__inOrder(self.root)
-        print("")
-
-    def __inOrder(self,root):
-        if(root == None):
-            return
-        self.__inOrder(root.left)
-        print(str(self.key),end='')
-        self.__inOrder(root.right)
-
-
-    def postOrder(self):
-        print("Post Order traversal: ",end='')
-        self.__postOrder(self.root)
-        print("")
-
-    def __postOrder(self,root):
-        if(root == None):
-            return
-        self.__postOrder(root.left)
-        self.__postOrder(root.right)
-        print(str(root.key) + " ", end='')
-
-
-
-
-
-    def levelOrder(self):
-        if(self.root == None):
-            return
-        else:
-            self.__levelOrder(self.root)
-            print("")
-
-    def __levelOrder(self,root):
-
-        queue = deque()
-        queue.append(root)
-
-        print("Level order: ", end ='')
-
-        while(len(queue) > 0):
-            element = queue.popleft()
-            print(str(element.key) + " ", end = '')
-
-            if(element.hasLeft()):
-                queue.append(element.left)
-
-            if(element.hasRight()):
-                queue.append(element.right)
-
-        return
 
 
     def search(self, keyElement):
-        return self.__search(self.root, int(keyElement))
+        if(self.__search(self.root, int(keyElement))):
+            print(str(keyElement)  + " found in BST")
+        else:
+            print(str(keyElement)  + " was not found in BST")
+
 
 
     def __search(self, root, keyElement):
@@ -106,19 +39,32 @@ class BinarySearchTree:
             self.__insert(self.root,keyElement)
 
 
+ 
     def __insert(self, root, keyElement):
         if(root.key == keyElement):
-            return
+            print(str(keyElement) + " is already present in the BST")
+            return False
+
         elif(root.key < keyElement):
             if(not root.hasRight()):
                 root.right = Node(int(keyElement))
+                root.quantityRight += 1
+                return True
             else:
-                return self.__insert(root.right, keyElement)
+                if(self.__insert(root.right, keyElement)):
+                    root.quantityRight += 1
         else:
             if(not root.hasLeft()):
                 root.left = Node(int(keyElement))
+                root.quantityLeft += 1
+                return True
             else:
-                return self.__insert(root.left, keyElement)
+                if(self.__insert(root.left, keyElement)):
+                    root.quantityLeft += 1
+
+
+
+
 
 
     def remove(self,keyElement):
@@ -136,11 +82,20 @@ class BinarySearchTree:
             return False
 
         if(root.key > keyElement):
-            return self.__remove(root.left,root,keyElement)
+            #return self.__remove(root.left,root,keyElement)
+            if(self.__remove(root.left,root,keyElement)):
+                root.quantityLeft -= 1
+                return True
+            else:
+                return False
 
 
         elif(root.key < keyElement):
-            return self.__remove(root.right,root,keyElement)
+            if(self.__remove(root.right,root,keyElement)):
+                root.quantityRight -= 1
+                return True
+            else:
+                return False
 
         else:
             if(root.isChild()):
@@ -165,7 +120,12 @@ class BinarySearchTree:
             else:
                 successor = self.__findSuccessor(root,keyElement)
                 root.key = int(successor)
-                self.__remove(root.right,successor)
+
+                if(self.__remove(root.right,successor)):
+                    root.quantityRight -= 1
+                    return True
+                else:
+                    return False
         
         return True
 
@@ -191,3 +151,30 @@ class BinarySearchTree:
         y = self.__getSize(root.right)
 
         return (x + y + 1)
+
+
+
+
+#To return a number that represents an unsuccessful operation, we can return "None" so as to avoid retrieving a negative number
+
+#Kth Element according to irOrder traversal
+    def findKthElement(self, position):
+        if(int(position) < 0):
+            print("Invalid position: Less than 0")
+            return
+
+        else:
+            element = self.__findKthElement(self.root,int(position))
+            print("Element at position " + str(position) + ": " + str(element))
+
+    def __findKthElement(self,root,position):
+        if(root == None):
+            print("There isn't element at this position.")
+            return
+        
+        if(root.quantityLeft + root.quantityRight == position):
+            return int(root.key)
+        elif(root.quantityLeft + root.quantityRight > position):
+            return self.__findKthElement(root.left, int(position - (root.quantityLeft + root.quantityRight)))
+        else:
+            return self.__findKthElement(root.right, int(position - (root.quantityLeft + root.quantityRight)))
