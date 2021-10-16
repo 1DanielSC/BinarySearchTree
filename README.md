@@ -6,8 +6,7 @@
 > Status: Developing ⚠️
 
 ## Table of Contents
-- [Binary Search Tree Project](#binary-search-tree-project)
-  - [Table of Contents](#table-of-contents)
+
   - [Description](#description)
   - [Installation](#installation)
   - [Code details](#code-details)
