@@ -5,15 +5,15 @@
 
 > Status: Developing ⚠️
 >
->Technology: Python 3.10.0
+>Technology used: Python
 
 ## Table of Contents
 
-  - [Description](#description)
-  - [Installation](#installation)
-  - [Code details](#code-details)
-  - [How to run it](#how-to-run-it)
-  - [Roadmap](#roadmap)
+  - [Description](#1-description)
+  - [Installation](#2-installation)
+  - [Code details](#3-code-details)
+  - [How to run it](#4-how-to-run-it)
+  - [Roadmap](#5-roadmap)
 
 
 ## 1. Description
@@ -21,7 +21,7 @@
 This project is an implementation of Binary Search Tree data structure in Python. 
 
 
-This application is set to receive an input file consisting of sequential instructions to be executed. The instructions supported can be found at [Files](#files).
+This application is set to receive an input file consisting of sequential instructions to be executed. The instructions supported can be found at [Files](#33-files).
 
 
 ## 2. Installation
@@ -32,9 +32,9 @@ You should have [Python 3.10.0](https://www.python.org/downloads/release/python-
 
 All details about the code and its implementation:
 
-  - [Classes](#classes)
-  - [Methods](#methods)
-  - [Files](#files)
+  - [Classes](#31-classes)
+  - [Methods](#32-methods)
+  - [Files](#33-files)
 
 ### 3.1 Classes
 
@@ -63,7 +63,36 @@ This is the class which most of elementary methods of a Binary Tree is implement
 
 ### 3.2 Methods
 
+
+
 ### 3.3 Files
+
+#### 3.3.1 instructions.txt
+
+All operations have to be written sequentially on this file.
+
+The program will read each instruction at a time and execute it.
+
+Operations suported:
+- Insert [element]
+- Delete [element]
+- Search [element]
+- Print
+- FindKthElement [element]
+- Size
+
+Proper way to write on file: 
+>instruction + " " + element
+
+Instruction in CAPS followed by a white space and a number right after it if necessary.
+
+Examples:
+
+PRINT
+
+INSERT 20
+
+
 
 ## 4. How to run it
 
@@ -75,3 +104,5 @@ Features to be added to this project in the future:
 
 - AVL Tree
 - Support to read an input file consisting of ordered operations that the program must follow
+- More methods. For instance: median(), mean() and isBinarySearchTree().
+- Dedicated class to run the program
