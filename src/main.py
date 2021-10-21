@@ -18,7 +18,7 @@ from bst import BinarySearchTree
 
 
 def fileOP():
-    inputFile = open("instructions.txt","r")
+    inputFile = open("input/instructions.txt","r")
 
     if(not inputFile.readable()):
         print("Error: The file 'instructions.txt' cannot be read.")
