@@ -2,6 +2,11 @@ from node import Node
 from collections import deque
 
 
+#Methods to implement:
+    #1 - isBalanced()
+    #2 - findKthElement() - inOrder
+
+
 class BinaryTree:
     def __init__(self, keyElement):
         self.root = Node(int(keyElement))
@@ -100,3 +105,57 @@ class BinaryTree:
                 queue.append(element.right)
 
         return
+    
+
+
+
+
+
+    def isBinarySearchTree(self):
+        if(self.root == None):
+            return False
+        return self.__isBinarySearchTree(self.root,None,None)
+    
+    def __isBinarySearchTree(self,root,rootMin,rootMax):
+        if(root == None):
+            return True
+        if(rootMin != None and root.key < rootMin.key):
+            return False
+        if(rootMax != None and root.key > rootMax.key):
+            return False
+        return self.__isBinarySearchTree(root.left,rootMin,root) and self.__isBinarySearchTree(root.right,root,rootMax)
+
+
+
+
+
+#To return a number that represents an unsuccessful operation, we can return "None" so as to avoid retrieving a negative number
+
+#Kth Element according to irOrder traversal
+    def findKthElement(self, position):
+        if(int(position) < 0):
+            print("Invalid position: Less than 0")
+            return
+
+        elif(self.root.quantityLeft + self.root.quantityRight + 1 < int(position)):
+            print("Error: Number of elements less than " + str(position))
+            return
+
+        else:
+            element = self.__findKthElement(self.root,int(position))
+            print("Element at position " + str(position) + ": " + str(element))
+
+
+
+    def __findKthElement(self,root,position):
+        if(root == None):
+            print("There isn't element at this position.")
+            return
+        
+
+        if(root.quantityLeft + 1 == position):
+            return root
+        elif(root.quantityLeft + 1 < position):
+            return self.__findKthElement(root.right,position - (root.quantityLeft + 1))
+        else:
+            return self.__findKthElement(root.left,position )

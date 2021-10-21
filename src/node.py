@@ -3,6 +3,7 @@ class Node:
         self.key = int(keyValue)
         self.left = None
         self.right = None
+        self.height = 0
         self.quantityLeft = 0
         self.quantityRight = 0
     

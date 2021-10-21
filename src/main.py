@@ -3,8 +3,6 @@
 from bst import BinarySearchTree
 
 
-#Important things to create for this project:
-    #Note 1: Create a README.md file
 
 #Features to implement later on
 
