@@ -4,20 +4,8 @@ from bst import BinarySearchTree
 
 
 
-#Features to implement later on
 
-    #Note 2: Create an Application class to run the program properly
-
-    #Note 3: Read an input file consisting of ordered operations that the program must follow
-            #Implement a function that identifies the instruction and call the proper method
-            #Compute one instruction at a time
-
-    #Note 4: AVL tree (new class)
-
-
-
-
-def fileOP():
+def readInputFile():
     inputFile = open("input/instructions.txt","r")
 
     if(not inputFile.readable()):
@@ -31,23 +19,16 @@ def fileOP():
         #print(line.strip())
         line.strip()
             #By default, the strip() function will remove all white space characters—spaces, tabs, new lines.
-        print("Line " + str(i) + " : " + str(read_instruction(line)))
+
+
+        #print("Line " + str(i) + " : " + str(read_instruction(line)))
+        instruction = read_instruction(line)
+        executeInstruction(str(instruction[0]),instruction[1])
+
+
         i+=1
 
     inputFile.close()
-
-
-
-    outputFile = open("end.txt","w")
-
-    if(outputFile.writable()):
-        stringd = input("Type sth that you want to see in the file: ")
-        outputFile.write(stringd)
-    else:
-        print("Error: Cannot write in file.")
-
-    outputFile.close()
-
 
 
 
@@ -78,11 +59,42 @@ def read_instruction(fileLine):
 
 
     if(len(number) == 0):
-        return instruction
+        return (instruction,None)
     else:
         return (instruction,int(number))
 
 
+
+
+
+
+
+def executeInstruction(instruction, number, tree):
+
+    match instruction:
+        case "PRINT":
+            tree.print()
+        case "INSERT":
+            tree.insert(int(number))
+        case "REMOVE":
+            tree.remove(int(number))
+        case "SEARCH":
+            tree.search(int(number))
+        case "FindKthElement":
+            tree.findKthElement(int(number))
+        case "SIZE":
+            tree.getSize()
+        case "PREORDER":
+            tree.preOrder()
+        case "INORDER":
+            tree.inOrder()
+        case "POSTORDER":
+            tree.postOrder()
+        case "LEVELORDER":
+            tree.levelOrder()
+        case _:
+            print("Error: Invalid instruction.")
+        
 
 
 
@@ -114,11 +126,13 @@ def main():
     tree.insert(-2)
     tree.print()
     tree.findKthElement(2)
+    tree.findKthElement(4)
     
 
 
 
 
 if __name__ == '__main__':
+    
+    #readInputFile()
     main()
-    #fileOP()

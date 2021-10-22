@@ -4,12 +4,18 @@ from collections import deque
 
 #Methods to implement:
     #1 - isBalanced()
-    #2 - findKthElement() - inOrder
 
 
 class BinaryTree:
     def __init__(self, keyElement):
         self.root = Node(int(keyElement))
+        self.size = 1
+
+
+
+    def getSize(self):
+        return int(self.size)
+
     
 
     def preOrder(self):
@@ -143,7 +149,7 @@ class BinaryTree:
 
         else:
             element = self.__findKthElement(self.root,int(position))
-            print("Element at position " + str(position) + ": " + str(element))
+            print("Element at position " + str(position) + ": " + str(element.key))
 
 
 
@@ -158,4 +164,20 @@ class BinaryTree:
         elif(root.quantityLeft + 1 < position):
             return self.__findKthElement(root.right,position - (root.quantityLeft + 1))
         else:
-            return self.__findKthElement(root.left,position )
+            return self.__findKthElement(root.left,position)
+
+    """
+    def getSize(self):
+        if self.root == None:
+            return 0
+        else: 
+            return self.__getSize(self.root)
+
+    def __getSize(self, root):
+        if(root == None):
+            return 0
+        x = self.__getSize(root.left)
+        y = self.__getSize(root.right)
+
+        return (x + y + 1)
+    """        

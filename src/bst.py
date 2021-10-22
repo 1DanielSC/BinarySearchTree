@@ -34,8 +34,11 @@ class BinarySearchTree(BinaryTree):
     def insert(self, keyElement):
         if(self.root == None):
             self.root = Node(int(keyElement))
+
         else:
-            self.__insert(self.root,keyElement)
+            if(self.__insert(self.root,keyElement)):
+                self.size += 1
+
 
 
  
@@ -70,7 +73,10 @@ class BinarySearchTree(BinaryTree):
         if(self.root == None):
             print("The tree is empty")
             return False
-        return self.__remove(self.root, None, int(keyElement))
+        elif(self.__remove(self.root, None, int(keyElement))):
+            self.size -= 1
+        else:
+            return False
 
 
 
@@ -132,19 +138,4 @@ class BinarySearchTree(BinaryTree):
         else:
             return root.key
 
-
-
-    def getSize(self):
-        if self.root == None:
-            return 0
-        else: 
-            return self.__getSize(self.root)
-
-    def __getSize(self, root):
-        if(root == None):
-            return 0
-        x = self.__getSize(root.left)
-        y = self.__getSize(root.right)
-
-        return (x + y + 1)
 
