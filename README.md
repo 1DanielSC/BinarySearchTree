@@ -103,10 +103,10 @@ This section will contain all the necessary information to run this application.
 
 Features to be added to this project in the future:
 
-- AVL Tree
-- Support to read an input file consisting of ordered operations that the program must follow
-- More methods. For instance: median(), mean() and isBinarySearchTree().
-- Dedicated class to run the program
+- AVL Tree class.
+- Support to read an input file consisting of ordered operations that the program must follow.
+- More methods. For instance: median() and mean().
+- Dedicated class to run the program.
 
 ## 6. License
 
