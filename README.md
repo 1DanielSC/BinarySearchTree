@@ -1,11 +1,11 @@
 # Binary Search Tree Project
 
-![GitHub last commit](https://img.shields.io/github/last-commit/1danielsc/BinarySearchTree)  ![GitHub issues](https://img.shields.io/github/issues-raw/1danielsc/BinarySearchTree)
+![GitHub last commit](https://img.shields.io/github/last-commit/1danielsc/BinarySearchTree)  ![GitHub issues](https://img.shields.io/github/issues-raw/1danielsc/BinarySearchTree)  [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+
 
 
 > Status: Developing ⚠️
->
->Technology used: Python
+
 
 ## Table of Contents
 
@@ -14,6 +14,7 @@
   - [Code details](#3-code-details)
   - [How to run it](#4-how-to-run-it)
   - [Roadmap](#5-roadmap)
+  - [License](#6-license)
 
 
 ## 1. Description
@@ -82,9 +83,9 @@ Operations suported:
 - Size
 
 Proper way to write on file: 
->instruction + " " + element
-
-Instruction in CAPS followed by a white space and a number right after it if necessary.
+>OPERATION + WHITE_SPACE + ELEMENT 
+>
+>Instruction in CAPS followed by a white space and a number right after it if necessary.
 
 Examples:
 
@@ -106,3 +107,9 @@ Features to be added to this project in the future:
 - Support to read an input file consisting of ordered operations that the program must follow
 - More methods. For instance: median(), mean() and isBinarySearchTree().
 - Dedicated class to run the program
+
+## 6. License
+
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
+[MIT licensed.]("https://github.com/1DanielSC/BinarySearchTree/blob/main/LICENSE")
