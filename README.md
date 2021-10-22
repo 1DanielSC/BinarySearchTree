@@ -19,7 +19,7 @@
 
 ## 1. Description
 
-This project is an implementation of Binary Search Tree data structure in Python. 
+This project is an implementation of Binary Search Tree data structure along with some of its algorithms in Python. 
 
 
 This application is set to receive an input file consisting of sequential instructions to be executed. The instructions supported can be found at [Files](#33-files).
@@ -52,7 +52,7 @@ The element to be stored in a tree.
 
 #### 3.1.1 Binary Tree
 
-This is the class which most of elementary methods of a Binary Tree is implemented.
+The Binary Tree class is the one which most of elementary methods of a Binary Tree is implemented, such as traversals, isBinarySearchTree(), getSize() and findKthElement().
 
 #### 3.1.1.1 Attributes
 
@@ -68,19 +68,37 @@ This is the class which most of elementary methods of a Binary Tree is implement
 
 ### 3.3 Files
 
-#### 3.3.1 instructions.txt
+#### 3.3.1 Input file
 
-All operations have to be written sequentially on this file.
+All operations have to be written sequentially on the file ***instructions.txt***.
 
 The program will read each instruction at a time and execute it.
 
 Operations suported:
-- Insert [element]
-- Delete [element]
-- Search [element]
-- Print
-- FindKthElement [element]
-- Size
+
+
+
+<ul>
+
+  <li>Insert [element]</li>
+  <li>Remove [element]</li>
+  <li>Search [element]</li>
+  <li>Print</li>
+  <li>FindKthElement [element]</li>
+  <li>Size</li>
+
+  <li>Traversals
+    <ul>
+      <li>Pre-order</li>
+      <li>In-order</li>
+      <li>Post-order</li>
+      <li>Level-order</li>
+    </ul>
+  </li>
+
+</ul>
+
+
 
 Proper way to write on file: 
 >OPERATION + WHITE_SPACE + ELEMENT 
