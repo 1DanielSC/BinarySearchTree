@@ -22,7 +22,7 @@
 This project is an implementation of Binary Search Tree data structure along with some of its algorithms in Python. 
 
 
-This application is set to receive an input file consisting of sequential instructions to be executed. The instructions supported can be found at [Files](#33-files).
+This application is set to receive an input file consisting of sequential instructions to be executed. All supported instructions can be found at [Files](#33-files).
 
 
 ## 2. Installation
